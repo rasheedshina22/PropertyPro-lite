@@ -267,6 +267,7 @@ padding: 5px 75px;
     position: absolute;
     left: 38%;
 }
+/* end of homepage */
 .breadcrumb{
     background: url('../img/bg.jpg');
     background-position: top center;
@@ -339,4 +340,43 @@ padding: 5px 75px;
 }
 .allproplink{
     text-decoration: none !important;
+}
+h2.title{
+    color: #DC143C;
+    padding: 0px 75px;
+    position: relative;
+    z-index: 3;
+    font-size: 23px;    
+}
+.address{
+    color: #000066;
+    padding: 0px 75px;
+    position: relative;
+    z-index: 3;
+    font-size: 23px;    
+}
+.specificProperty{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+.specificPropertyColumn{
+   /* flex:50%; */
+   max-width:50% 
+}
+.headingMarketer{
+    height: 36px;
+    background: #000066;    
+    color: white;    
+    padding: 1.0em 23em 2.1em 1.1em;    
+    font-family: font1;    
+    font-size: 1.0em;
+}
+.description{
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 10px 143px; 
+}
+.descriptionProperty{
+    max-width:100% 
 }
