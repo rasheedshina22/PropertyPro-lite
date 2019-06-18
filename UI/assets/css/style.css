@@ -421,6 +421,68 @@ h2.title{
     padding: 0.9em;
     font-size: 1em;
     outline: none;  
-    background:#000066;
+    background:#f8f8f8;
     color:white;  
+}
+.dashboard{
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 10px 100px;
+    justify-content: space-between;
+}
+.dashboard1{
+    flex:30%;
+    max-width: 30%; 
+}
+.dashboard2{
+    flex:69%;
+    max-width: 70%; 
+}
+.center{
+    text-align:center;
+}
+.db{
+    list-style: none;
+    padding: 8px;
+    margin:0px;
+}
+.dashboard1 ul li{
+    display: block;
+    background-color: #333399;    
+    padding: 16px 8px;
+    margin-bottom: 18px;
+}
+.dashboard1 ul li a{
+    display: block;  
+    text-decoration: none;
+    color:white; 
+}
+.color{
+    color:#000066;
+}
+.highlight{
+    display: flex;
+    flex-wrap: wrap;  
+}
+.highlightColumn{
+    flex:30%;
+    max-width: 70% 
+}
+.circle{
+    height: 250px;
+    width: 250px;   
+    border-radius:50%;
+    background: #333399;
+    margin-top: 34px;
+}
+a:hover{
+    color:#DC143C !important;
+}
+.highlightColumn a{
+    text-decoration: none;
+    color:white;
+}
+.writeup{
+    position: relative;
+    top: 106px;
 }
