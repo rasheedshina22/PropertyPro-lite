@@ -380,3 +380,47 @@ h2.title{
 .descriptionProperty{
     max-width:100% 
 }
+.register{
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 10px 437px;
+    justify-content: center; 
+
+}
+.registerColumn{
+    flex:100%;
+    max-width: 100%;
+}
+.registerColumn input[type="email"]{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;    
+}
+.registerColumn input[type="text"]{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;   
+}
+.registerColumn input[type="password"]{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;    
+}
+.registerColumn textarea{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;  
+    resize: none;  
+}
+.registerColumn input[type="submit"]{
+    width: 35%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;  
+    background:#000066;
+    color:white;  
+}
