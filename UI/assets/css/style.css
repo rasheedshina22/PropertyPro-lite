@@ -486,3 +486,18 @@ a:hover{
     position: relative;
     top: 106px;
 }
+.registerColumn select{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;    
+}
+.registerColumn input[type="number"]{
+    width: 100%;
+    padding: 0.9em;
+    font-size: 1em;
+    outline: none;    
+}
+.red{
+    color:red;
+}
