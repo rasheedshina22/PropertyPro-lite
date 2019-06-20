@@ -6,6 +6,7 @@ body{
     padding:0px;
     font-family: font2;
 }
+
 @font-face {        
     font-family: font1;
     src: url(../fonts/AvenirLTStd-Black.otf) format('truetype');
@@ -149,8 +150,9 @@ padding: 5px 75px;
 .propertyColumn{
     flex:25%;
 }
-.propertyColumn img{
-    margin-left: 12px;
+.propertyColumn img {
+    margin-left: 7px;
+    margin-top: 14px;
 }
 .box{     
      box-shadow: 0px 0px 15px 0px #D6D6D6;
@@ -526,4 +528,144 @@ td{
 }
 .moveleft{
     margin-left: 60px;
+}
+
+@media only screen and (max-width:768px){
+    #property img{
+        margin-top: 10px;
+        margin-left: 26px;      
+    }
+    .manageproperties {
+        padding: 5px;
+        
+    }
+    .specificPropertyColumn {
+      
+        max-width: 100%;
+    }
+    .abtimg{
+        display: none;
+    }
+    .aboutcolumn {
+        flex: 100%;
+    }
+    .register{
+        padding: 10px 98px;
+    }
+    .dashboard{
+        padding: 10px 20px;
+    }
+    .dashboard1 {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .dashboard2 {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .allpropertiescolumn {
+        max-width: 100%;
+    }
+    .breadcrumbTitle {
+        padding: 60px 60px;
+        
+    }
+
+}
+
+@media only screen and (max-width:600px){
+    .abtimg{
+        display: none;
+    } 
+    .searcharea{
+        display:none;
+    }
+    .register{
+        padding: 8px 20px;
+    }
+    .registerColumn input[type="submit"] {
+        width: 49%;
+    }
+    .aboutcolumn {
+        flex: 100%;
+    }
+    .specificPropertyColumn img {
+        width: 357px !important;
+        height: 240px !important;
+    }
+    .headingMarketer {       
+        padding: 1.0em 3em 2.1em 1.1em;       
+    }
+    .description {       
+        padding: 1px 35px;
+    }
+    .header1{
+        padding: 10px 67px !important;
+    }
+    .header2{
+        padding: 3px 38px !important;
+    }
+    .headercolumn {
+        flex: 100%;
+    }
+    label.button{
+        padding: -0.2em 0.2em !important;
+    }
+    .copy{
+        left: 5%;
+    }
+    .form1column {
+        margin-top: 32px;
+        flex: 100%;
+        margin-left: 75px;
+    }
+    .propertyColumn img {
+        margin-left: 4px;
+        margin-top: 12px;
+    }
+    h1.title {
+       padding: 5px 38px;
+    }
+    .about{
+        padding: 5px 37px;
+    }
+    .abt {
+        padding:0 !important;
+        
+    }
+    .footerColumn {
+        flex: 100%;
+    }
+    .no{
+    margin-left: 61px;
+    margin-top: 10px;       
+    }
+    .dashboard {        
+        padding: 10px 20px;        
+    }
+    .dashboard1 {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .dashboard2 {
+        flex: 100%;
+        max-width: 100%;
+    }
+    .highlightColumn {
+        flex: 100%;
+        max-width: 100%;
+        margin-left: 33px;
+    }
+    .allproperties {        
+        padding: 5px 5px;
+    }
+    .allpropertiescolumn img {
+        width: 349px !important;
+        height: 272px !important;
+    }
+    .registerColumn img{
+        width: 321px;
+        height: 219px;
+    }
+    
 }
