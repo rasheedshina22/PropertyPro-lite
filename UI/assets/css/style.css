@@ -32,6 +32,21 @@ body{
 .justify{
     text-align: justify;
 }
+.nodisplay{
+    display: none;
+}
+#property img{
+    width: 302px;
+    height: 281px;
+}
+.specificPropertyColumn img{
+    width: 562px;
+    height: 339px;
+}
+.allpropertiescolumn img{
+    width: 466px;
+    height: 275px;
+}
 
 .header1{
     display: flex;
@@ -146,6 +161,7 @@ padding: 5px 75px;
     justify-content: space-between;
 
 }
+
 
 .propertyColumn{
     flex:25%;
