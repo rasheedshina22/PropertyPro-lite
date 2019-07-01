@@ -43,4 +43,24 @@ const alreadyExistingUser = {
   phone_number: '07055463452',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
-export { user, incompleteUser, invalidUserData, alreadyExistingUser };
+
+//  incomplete login data
+const incompleteLoginData = {
+  email: '',
+  password: faker.internet.password()
+};
+
+//  incomplete login data
+const invalidLoginData = {
+  email: 'okwuosachinedu@gmail.com',
+  password: faker.internet.password()
+};
+
+export {
+  user,
+  incompleteUser,
+  invalidUserData,
+  alreadyExistingUser,
+  incompleteLoginData,
+  invalidLoginData
+};

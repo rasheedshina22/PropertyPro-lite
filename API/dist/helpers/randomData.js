@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.alreadyExistingUser = exports.invalidUserData = exports.incompleteUser = exports.user = void 0;
+exports.invalidLoginData = exports.incompleteLoginData = exports.alreadyExistingUser = exports.invalidUserData = exports.incompleteUser = exports.user = void 0;
 
 var _faker = _interopRequireDefault(require("faker"));
 
@@ -51,5 +51,17 @@ var alreadyExistingUser = {
   confirm_password: _faker["default"].internet.password(),
   phone_number: '07055463452',
   address: "".concat(_faker["default"].address.streetAddress(), ", Lagos, Nigeria")
-};
+}; //  incomplete login data
+
 exports.alreadyExistingUser = alreadyExistingUser;
+var incompleteLoginData = {
+  email: '',
+  password: _faker["default"].internet.password()
+}; //  incomplete login data
+
+exports.incompleteLoginData = incompleteLoginData;
+var invalidLoginData = {
+  email: 'okwuosachinedu@gmail.com',
+  password: _faker["default"].internet.password()
+};
+exports.invalidLoginData = invalidLoginData;
