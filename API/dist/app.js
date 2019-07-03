@@ -11,13 +11,29 @@ var _dotenv = require("dotenv");
 
 var _express = _interopRequireDefault(require("express"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
+var _bodyParser = require("body-parser");
+
+var _authRoute = _interopRequireDefault(require("./routes/authRoute"));
+
 // Initialize process.env variables
 (0, _dotenv.config)(); //  create express app
 
-var app = (0, _express["default"])(); // Set server port
+var app = (0, _express["default"])(); // parse application/x-www-form-urlencoded
+
+app.use((0, _bodyParser.urlencoded)({
+  extended: true
+})); // parse application/json
+
+app.use((0, _bodyParser.json)()); // Set server port
 
 var port = process.env.PORT || 3000;
-app.set('port', port); // Default Route
+app.set('port', port); //  use cors only for our routes
+
+app.use((0, _cors["default"])()); // routes
+
+app.use('/api/v1/auth', _authRoute["default"]); // Default Route
 
 app.get('/api/v1', function (req, res) {
   return res.status(200).json({

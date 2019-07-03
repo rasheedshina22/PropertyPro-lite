@@ -16,8 +16,9 @@ var users = [{
   first_name: 'chijioke',
   last_name: 'okwuosa',
   password: _bcrypt["default"].hashSync('jioke', 8),
-  phone_number: '07037381011',
-  address: "".concat(_faker["default"].address.streetAddress(), ", Lagos, Nigeria")
+  phoneNumber: '07037381011',
+  address: "".concat(_faker["default"].address.streetAddress(), ", Lagos, Nigeria"),
+  is_admin: false
 }];
 var _default = users;
 exports["default"] = _default;

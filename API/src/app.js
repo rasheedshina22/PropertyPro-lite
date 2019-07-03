@@ -1,5 +1,8 @@
 import { config } from 'dotenv';
 import express from 'express';
+import cors from 'cors';
+import { json, urlencoded } from 'body-parser';
+import authRoute from './routes/authRoute';
 
 // Initialize process.env variables
 config();
@@ -7,9 +10,21 @@ config();
 //  create express app
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(urlencoded({ extended: true }));
+
+// parse application/json
+app.use(json());
+
 // Set server port
 const port = process.env.PORT || 3000;
 app.set('port', port);
+
+//  use cors only for our routes
+app.use(cors());
+
+// routes
+app.use('/api/v1/auth', authRoute);
 
 // Default Route
 app.get('/api/v1', (req, res) =>
