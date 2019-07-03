@@ -56,5 +56,12 @@ class UserServices extends UserModel {
     const newNoOfUsers = users.push(user);
     return newNoOfUsers > noOfUsers;
   }
+
+  static async emailExist(emailAddress) {
+    const user = users.find(({ email }) => {
+      return email === emailAddress;
+    });
+    return user;
+  }
 }
 export default UserServices;

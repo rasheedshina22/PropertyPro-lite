@@ -2,13 +2,13 @@ import faker from 'faker';
 
 //  valid user data
 const user = {
-  email: faker.internet.email(),
-  first_name: faker.name.firstName(),
-  last_name: faker.name.lastName(),
-  password: faker.internet.password(),
-  confirm_password: faker.internet.password(),
-  phone_number: '07055463452',
-  address: `${faker.address.streetAddress()}, Lagos, Nigeria`
+  email: 'okadr@gmail.com',
+  first_name: 'emeka',
+  last_name: 'okafor',
+  password: '1234567',
+  confirm_password: '1234567',
+  phoneNumber: '07055463452',
+  address: ' Lagos, Nigeria'
 };
 
 //  incomplete user data
@@ -18,7 +18,7 @@ const incompleteUser = {
   last_name: faker.name.lastName(),
   password: faker.internet.password(),
   confirm_password: faker.internet.password(),
-  phone_number: '',
+  phoneNumber: '',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 
@@ -29,7 +29,7 @@ const invalidUserData = {
   last_name: faker.name.lastName(),
   password: faker.internet.password(),
   confirm_password: faker.internet.password(),
-  phone_number: 'ayo',
+  phoneNumber: 'ayo',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 
@@ -38,9 +38,9 @@ const alreadyExistingUser = {
   email: 'okwuosachijioke@gmail.com',
   first_name: faker.name.firstName(),
   last_name: faker.name.lastName(),
-  password: faker.internet.password(),
-  confirm_password: faker.internet.password(),
-  phone_number: '07055463452',
+  password: '123456',
+  confirm_password: '123456',
+  phoneNumber: '07055463452',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 
