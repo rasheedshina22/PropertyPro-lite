@@ -7,7 +7,7 @@ const users = [
     email: 'okwuosachijioke@gmail.com',
     first_name: 'chijioke',
     last_name: 'okwuosa',
-    password: bcrypt.hashSync('jioke', 8),
+    password: bcrypt.hashSync('jioke1', 8),
     phoneNumber: '07037381011',
     address: `${faker.address.streetAddress()}, Lagos, Nigeria`,
     is_admin: false
