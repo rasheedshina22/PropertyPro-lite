@@ -49,5 +49,43 @@ class AuthController {
       });
     }
   }
+
+  static async login(req, res) {
+    const { email, password } = req.body;
+    try {
+      const user = await userServices.emailExist(email);
+      if (!user)
+        return res.status(401).json({
+          status: '401 Unauthorized',
+          error: 'Invalid Email'
+        });
+      const isMatch = await userServices.verifyPassword(
+        password,
+        user.password
+      );
+      if (!isMatch)
+        return res.status(401).json({
+          status: '401 Unauthorized',
+          error: 'Incorrect Password'
+        });
+      const { id, first_name, last_name } = user;
+      const token = userServices.generateToken();
+      return res.status(200).json({
+        status: 'Success',
+        data: {
+          token,
+          id,
+          first_name,
+          last_name,
+          email
+        }
+      });
+    } catch (e) {
+      return res.status(500).json({
+        status: '500 Server Interval Error',
+        error: 'Internal server error occured'
+      });
+    }
+  }
 }
 export default AuthController;

@@ -12,4 +12,6 @@ router.post(
   AuthController.createAccount
 );
 
+router.post('/signin', AuthController.login);
+
 export default router;

@@ -50,10 +50,16 @@ const incompleteLoginData = {
   password: faker.internet.password()
 };
 
-//  incomplete login data
+//  invalid login data
 const invalidLoginData = {
   email: 'okwuosachinedu@gmail.com',
   password: faker.internet.password()
+};
+
+//  valid login data
+const validLoginData = {
+  email: 'okwuosachijioke@gmail.com',
+  password: 'jioke'
 };
 
 export {
@@ -62,5 +68,6 @@ export {
   invalidUserData,
   alreadyExistingUser,
   incompleteLoginData,
-  invalidLoginData
+  invalidLoginData,
+  validLoginData
 };
