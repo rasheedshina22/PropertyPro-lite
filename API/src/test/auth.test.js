@@ -7,7 +7,9 @@ import {
   incompleteUser,
   invalidUserData,
   alreadyExistingUser,
-  incompleteLoginData
+  incompleteLoginData,
+  validLoginData,
+  invalidLoginData
 } from '../helpers/randomData';
 
 // Unit Test for Authentication Route
@@ -81,8 +83,8 @@ describe('Auth Route Endpoints', () => {
   describe('POST api/v1/auth/signin', () => {
     it('should successfully login a user if all required inputs are provided', done => {
       request(app)
-        .post('/api/v1/auth/signup')
-        .send(users)
+        .post('/api/v1/auth/signin')
+        .send(validLoginData)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200)
@@ -115,8 +117,8 @@ describe('Auth Route Endpoints', () => {
     });
     it('should not login a user if any of the input paramters is/are invalid', done => {
       request(app)
-        .post('/api/v1/auth/signup')
-        .send(invalidUserData)
+        .post('/api/v1/auth/signin')
+        .send(invalidLoginData)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(401)
