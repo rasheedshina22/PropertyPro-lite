@@ -59,7 +59,7 @@ const invalidLoginData = {
 //  valid login data
 const validLoginData = {
   email: 'okwuosachijioke@gmail.com',
-  password: 'jioke'
+  password: 'jioke1'
 };
 
 export {
