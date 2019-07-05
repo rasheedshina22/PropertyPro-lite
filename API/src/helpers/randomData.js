@@ -1,4 +1,5 @@
 import faker from 'faker';
+import userServices from '../services/UserServices';
 
 //  valid user data
 const user = {
@@ -62,6 +63,11 @@ const validLoginData = {
   password: 'jioke1'
 };
 
+// Property Test Data
+// Valid Token
+const validTokenData = userServices.generateToken(490, false);
+const inValidTokenData = 'eyJhbGciOiJI.UzI1NiIsInR5c.CI6IkpXVCJ9';
+
 export {
   user,
   incompleteUser,
@@ -69,5 +75,7 @@ export {
   alreadyExistingUser,
   incompleteLoginData,
   invalidLoginData,
-  validLoginData
+  validLoginData,
+  validTokenData,
+  inValidTokenData  
 };
