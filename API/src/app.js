@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { json, urlencoded } from 'body-parser';
 import authRoute from './routes/authRoute';
-
+import propertyRoute from './routes/propertyRoute';
 
 // Initialize process.env variables
 config();
@@ -26,7 +26,7 @@ app.use(cors());
 
 // routes
 app.use('/api/v1/auth', authRoute);
-
+app.use('/api/v1/property', propertyRoute);
 
 // Default Route
 app.get('/api/v1', (req, res) =>

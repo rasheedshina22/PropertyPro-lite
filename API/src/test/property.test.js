@@ -20,7 +20,7 @@ describe('Property Route Endpoints', () => {
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
-        .set('x-access-token', validTokenData)
+        .set('authorization', validTokenData)
         .set('Connection', 'keep-alive')
         .expect('Content-Type', /json/)
         .expect(201)
@@ -37,8 +37,7 @@ describe('Property Route Endpoints', () => {
             'price',
             'created_on',
             'image_url',
-            'purpose',
-            'imageName'
+            'purpose'
           );
         })
         .end(done);
@@ -62,7 +61,7 @@ describe('Property Route Endpoints', () => {
         .expect(401)
         .expect(res => {
           const { status, error } = res.body;
-          expect(status).to.equal('401 Unauthorized');
+          expect(status).to.equal('401 unauthorized');
           expect(error).to.equal('Access token is Required');
         })
         .end(done);
@@ -87,7 +86,7 @@ describe('Property Route Endpoints', () => {
         .expect(401)
         .expect(res => {
           const { status, error } = res.body;
-          expect(status).to.equal('401 Unauthorized');
+          expect(status).to.equal('401 unauthorized');
           expect(error).to.equal('Access token is Invalid');
         })
         .end(done);
