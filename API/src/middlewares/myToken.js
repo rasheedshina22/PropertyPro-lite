@@ -8,14 +8,13 @@ const validateToken = (req, res, next) => {
       status: '401 unauthorized',
       error: 'Access token is Required'
     });
-  jwt.verify(token, process.env.SECRET, (err, decoded) => {
-    if (err)
+  jwt.verify(token, process.env.SECRET, (error, result) => {
+    if (error)
       return res.status(401).json({
         status: '401 Unauthorized',
         error: 'Access token is Invalid'
       });
-    const { data } = decoded;
-    req.data = data;
+    req.data = result.data;
     return next();
   });
 };

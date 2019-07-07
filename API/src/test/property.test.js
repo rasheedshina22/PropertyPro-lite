@@ -6,7 +6,7 @@ import { validTokenData, inValidTokenData } from '../helpers/randomData';
 
 describe('Property Route Endpoints', () => {
   describe('POST api/v1/property', () => {
-    it('should allow an authenticated user(Agent) to successfully post a property advert if he/she provides all the required data', done => {
+    it('Allows a user to post property when he/she provides all the required valid data', done => {
       request(app)
         .post('/api/v1/property')
         .field('status', 'Available')
@@ -15,7 +15,7 @@ describe('Property Route Endpoints', () => {
         .field('city', 'Onitsha')
         .field('address', '22, Uke Street')
         .field('type', '2 bedroom')
-        .field('purpose', 'For Rent')
+        .field('purpose', 'Rent')
         .attach(
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
@@ -42,16 +42,16 @@ describe('Property Route Endpoints', () => {
         })
         .end(done);
     });
-    it('should prevent an unauthenticated user from posting a property', done => {
+    it('should prevent a user who has not been authenticated from posting a property', done => {
       request(app)
         .post('/api/v1/property')
         .field('status', 'Available')
-        .field('price', 30000.0)
+        .field('price', 40000.0)
         .field('state', 'Anambra')
         .field('city', 'Onitsha')
         .field('address', '22, Uke Street')
         .field('type', '2 bedroom')
-        .field('purpose', 'For Rent')
+        .field('purpose', 'Rent')
         .attach(
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
@@ -70,45 +70,45 @@ describe('Property Route Endpoints', () => {
       request(app)
         .post('/api/v1/property')
         .field('status', 'Available')
-        .field('price', 80000.0)
-        .field('state', 'Lagos')
-        .field('city', 'Ikeja')
-        .field('address', '30, Caleb Road')
+        .field('price', 40000.0)
+        .field('state', 'Anambra')
+        .field('city', 'Onitsha')
+        .field('address', '22, Uke Street')
         .field('type', '2 bedroom')
-        .field('purpose', 'For Rent')
+        .field('purpose', 'Rent')
         .attach(
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('x-access-token', inValidTokenData)
+        .set('authorization', inValidTokenData)
         .expect('Content-Type', /json/)
         .expect(401)
         .expect(res => {
           const { status, error } = res.body;
-          expect(status).to.equal('401 unauthorized');
+          expect(status).to.equal('401 Unauthorized');
           expect(error).to.equal('Access token is Invalid');
         })
         .end(done);
     });
-    it('should prevent a user from posting a property advert if he/she provides invalid input parameters', done => {
+    it('should prevent a user from posting a property if he/she provides invalid data', done => {
       request(app)
         .post('/api/v1/property')
-        .field('status', 'Available')
-        .field('price', 'rhjfioo')
+        .field('status', 'co,img')
+        .field('price', 'chijjokd')
         .field('state', 'Anambra')
-        .field('city', 12344)
-        .field('address', '30, Caleb Road')
+        .field('city', 'Onitsha')
+        .field('address', '22, Uke Street')
         .field('type', '2 bedroom')
-        .field('purpose', 'For Rent')
+        .field('purpose', 'Rent')
         .attach(
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('x-access-token', validTokenData)
+        .set('authorization', validTokenData)
         .expect('Content-Type', /json/)
-        .expect(401)
+        .expect(400)
         .expect(res => {
           const { status } = res.body;
           expect(status).to.equal('400 Bad Request');
@@ -116,24 +116,20 @@ describe('Property Route Endpoints', () => {
         })
         .end(done);
     });
-    it('should prevent a user from posting an advert if any/all the required input parameters is/are not provided or is/are provided as empty fields', done => {
+    it('should prevent a user from posting an advert if any of the required field is empty', done => {
       request(app)
         .post('/api/v1/property')
-        .field('status', 'Available')
-        .field('price', '')
         .field('state', 'Anambra')
-        .field('city', 'Onitsha')
-        .field('address', '')
-        .field('type', '3 bedroom')
-        .field('purpose', 'For Rent')
+        .field('type', '2 bedroom')
+        .field('purpose', 'Rent')
         .attach(
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('x-access-token', validTokenData)
+        .set('authorization', validTokenData)
         .expect('Content-Type', /json/)
-        .expect(401)
+        .expect(400)
         .expect(res => {
           const { status } = res.body;
           expect(status).to.equal('400 Bad Request');

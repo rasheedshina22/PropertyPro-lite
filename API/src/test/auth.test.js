@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { expect } from 'chai';
 import app from '../app';
-import users from '../data/data-structure/users';
+
 import {
   user,
   incompleteUser,

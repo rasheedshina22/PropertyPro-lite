@@ -9,9 +9,9 @@ const properties = [
     city: 'Onitsha',
     address: '20, Uke Street',
     type: '3 bedroom',
-    image_url: faker.image.imageUrl(),
-    purpose: 'For Rent',
+    purpose: 'Rent',
     status: 'Available',
+    image_url: faker.image.imageUrl(),
     created_on: new Date().toLocaleString()
   },
   {
@@ -22,9 +22,9 @@ const properties = [
     city: 'Ekuru',
     address: '20, Donga Street',
     type: '2 bedroom',
-    image_url: faker.image.imageUrl(),
     purpose: 'For Rent',
     status: 'Available',
+    image_url: faker.image.imageUrl(),
     created_on: new Date().toLocaleString()
   }
 ];

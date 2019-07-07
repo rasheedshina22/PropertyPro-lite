@@ -35,4 +35,9 @@ export default class Property extends PropertyModel {
     const newOfProperties = properties.push(property);
     return newOfProperties > noOfProperties;
   }
+
+  static async findPropertyById(propId) {
+    const property = properties.find(prop => prop.id === parseInt(propId, 10));
+    return property;
+  }
 }
