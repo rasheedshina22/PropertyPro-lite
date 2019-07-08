@@ -37,8 +37,8 @@ const invalidUserData = {
 //  already existing user data
 const alreadyExistingUser = {
   email: 'okwuosachijioke@gmail.com',
-  first_name: faker.name.firstName(),
-  last_name: faker.name.lastName(),
+  first_name: 'chijioke',
+  last_name: 'okwuosa',
   password: '123456',
   confirm_password: '123456',
   phoneNumber: '07055463452',
@@ -66,7 +66,7 @@ const validLoginData = {
 // Property Test Data
 // Valid Token
 const validTokenData = userServices.generateToken(1, false);
-const inValidTokenData = 'eyJhbGciOiJI.UzI1NiIsInR5c.CI6IkpXVCJ9';
+const inValidTokenData = '5765765iJI.UzzsdfjsdbfkaslkCI6IkpXVxcbcb';
 
 export {
   user,

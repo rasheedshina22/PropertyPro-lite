@@ -1,6 +1,5 @@
 import { check, validationResult } from 'express-validator';
 import { states, type, purpose, status } from '../helpers/propertyData';
-import { deleteImage } from '../helpers/cloudinary';
 
 export default class PostProperty {
   static validate() {
@@ -23,7 +22,7 @@ export default class PostProperty {
         .isLength({ min: 3, max: 15 })
         .withMessage('should be between 3-15 characters long')
         .trim()
-        .matches(/^\d+(\.|\d)[0-9]$/)
+        .matches(/^\d+(\.|\d)\d+$/)
         .withMessage('should be a float or numbers')
         .escape(),
       check('state')
@@ -79,28 +78,27 @@ export default class PostProperty {
 
   static async verifyValidationResult(req, res, next) {
     const errors = validationResult(req);
-    let isRequiredError = false;
+    let isRequired = false;
     if (!errors.isEmpty()) {
       const validateErrors = errors.array();
-      const errorObj = validateErrors.reduce((newErrObj, errObj) => {
-        if (errObj.msg === 'Field is Required') isRequiredError = true;
-        if (errObj.msg === 'Field cannot be empty') isRequiredError = true;
-        newErrObj[errObj.param] = !newErrObj[errObj.param]
-          ? errObj.msg
-          : newErrObj[errObj.param];
-        return newErrObj;
+      const errorResult = validateErrors.reduce((newErrors, err) => {
+        if (err.msg === 'Field is Required') isRequired = true;
+        if (err.msg === 'Field cannot be empty') isRequired = true;
+        newErrors[err.param] = !newErrors[err.param]
+          ? err.msg
+          : newErrors[err.param];
+        return newErrors;
       }, {});
-      deleteImage(req.file.public_id);
-      if (isRequiredError)
+      if (isRequired)
         return res.status(400).json({
           status: '400 Bad Request',
           error: 'Some required fields are missing',
-          errors: errorObj
+          errors: errorResult
         });
       return res.status(400).json({
         status: '400 Bad Request',
         error: 'Your request contains invalid parameters',
-        errors: errorObj
+        errors: errorResult
       });
     }
 

@@ -39,8 +39,8 @@ const states = [
 ];
 
 const type = [
-  '2bedroom',
-  '3bedroom',
+  '2 bedroom',
+  '3 bedroom',
   'Duplex',
   'twin Duplex',
   'Commercial Property',
@@ -50,6 +50,6 @@ const type = [
 
 const status = ['Available', 'Sold', 'Rented'];
 
-const purpose = ['sale', 'rent'];
+const purpose = ['Sale', 'Rent'];
 
 export { type, states, status, purpose };

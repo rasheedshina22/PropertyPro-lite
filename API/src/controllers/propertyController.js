@@ -10,6 +10,7 @@ export default class PropertyController {
       let { status } = req.body;
       const owner = req.data.id;
       const { url } = req.file;
+      // const url = 'fakeurl';
       const id = await Helpers.generateID(properties);
       if (!status) status = 'Available';
       const property = {
