@@ -10,10 +10,11 @@ export default class Property extends PropertyModel {
     city,
     address,
     type,
-    imageUrl,
     purpose,
-    createdOn,
-    status
+    status,
+    publicID,
+    imageUrl,
+    createdOn
   ) {
     super(
       id,
@@ -23,10 +24,11 @@ export default class Property extends PropertyModel {
       city,
       address,
       type,
-      imageUrl,
       purpose,
-      createdOn,
-      status
+      status,
+      publicID,
+      imageUrl,
+      createdOn
     );
   }
 
