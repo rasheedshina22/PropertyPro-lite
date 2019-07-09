@@ -249,26 +249,5 @@ describe('Property Route Endpoints', () => {
         })
         .end(done);
     });
-    it('should prevent a user from updating an advert if any of the required field is empty', done => {
-      request(app)
-        .patch('/api/v1/property/1')
-        .field('state', 'Anambra')
-        .field('type', '2 bedroom')
-        .field('purpose', 'Rent')
-        .attach(
-          'image',
-          path.resolve(__dirname, '../../../UI/assets/img/property.png')
-        )
-        .set('Connection', 'keep-alive')
-        .set('authorization', validTokenData)
-        .expect('Content-Type', /json/)
-        .expect(400)
-        .expect(res => {
-          const { status } = res.body;
-          expect(status).to.equal('400 Bad Request');
-          expect(res.body).to.have.all.keys('status', 'error', 'errors');
-        })
-        .end(done);
-    });
   });
 });
