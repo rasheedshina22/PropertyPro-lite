@@ -156,7 +156,7 @@ describe('Property Route Endpoints', () => {
         .set('authorization', validTokenData)
         .set('Connection', 'keep-alive')
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
         .expect(res => {
           const { status, data } = res.body;
           expect(status).to.equal('Success');

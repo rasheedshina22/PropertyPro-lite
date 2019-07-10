@@ -1,5 +1,3 @@
-import faker from 'faker';
-
 const properties = [
   {
     id: 1,
@@ -11,7 +9,9 @@ const properties = [
     type: '3 bedroom',
     purpose: 'Rent',
     status: 'Available',
-    image_url: faker.image.imageUrl(),
+    public_id: 'gbws7csjxykasla7g3wk',
+    image_url:
+      'https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png',
     created_on: new Date().toLocaleString()
   },
   {
@@ -24,7 +24,9 @@ const properties = [
     type: '2 bedroom',
     purpose: 'For Rent',
     status: 'Available',
-    image_url: faker.image.imageUrl(),
+    public_id: 'y3qkohsrs50zgx3zjavv',
+    image_url:
+      'https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519515/property/images/y3qkohsrs50zgx3zjavv.png',
     created_on: new Date().toLocaleString()
   }
 ];

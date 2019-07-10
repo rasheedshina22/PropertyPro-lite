@@ -7,21 +7,23 @@ export default class Property {
     city,
     address,
     type,
-    imageUrl,
     purpose,
-    createdOn,
-    status = 'Available'
+    status = 'Available',
+    publicID,
+    imageUrl,
+    createdOn
   ) {
     this.id = id;
     this.owner = owner;
-    this.status = status;
     this.price = price;
     this.state = state;
     this.city = city;
     this.address = address;
     this.type = type;
-    this.image_url = imageUrl;
     this.purpose = purpose;
+    this.status = status;
+    this.public_id = publicID;
+    this.image_url = imageUrl;
     this.created_on = createdOn;
   }
 }

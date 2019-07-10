@@ -17,4 +17,9 @@ const storage = cloudinaryStorage({
   format: 'png',
   folder: 'property/images'
 });
-export default storage;
+
+const deleteExistingImg = async publicId => {
+  const result = await cloudinary.uploader.destroy(publicId, async err => err);
+  return result;
+};
+export { deleteExistingImg, storage };
