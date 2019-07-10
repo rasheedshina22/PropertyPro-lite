@@ -29,11 +29,14 @@ export default class Login {
     const errors = validationResult(req);
     let isRequiredError = false;
     let isInvalidPasswordError = false;
+    let isInvalidEmail = false;
     if (!errors.isEmpty()) {
       const validateErrors = errors.array();
       validateErrors.forEach(err => {
         if (err.msg === 'Field cannot be empty') isRequiredError = true;
         if (err.msg === 'Invalid Password') isInvalidPasswordError = true;
+        if (err.msg === 'Should be a valid Email Address')
+          isInvalidEmail = true;
       });
       if (isRequiredError)
         return res.status(401).json({
@@ -45,10 +48,11 @@ export default class Login {
           status: '401 Unauthorized',
           error: 'Invalid Password'
         });
-      return res.status(401).json({
-        status: '401 Unauthorized',
-        error: 'Invalid Email Address'
-      });
+      if (isInvalidEmail)
+        return res.status(401).json({
+          status: '401 Unauthorized',
+          error: 'Invalid Email Address'
+        });
     }
 
     return next();

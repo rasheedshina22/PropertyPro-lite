@@ -47,8 +47,12 @@ class UserServices extends UserModel {
   }
 
   static async verifyPassword(plainText, hashedText) {
-    const isMatch = await bcrypt.compare(plainText, hashedText);
-    return isMatch;
+    try {
+      const isMatch = await bcrypt.compare(plainText, hashedText);
+      return isMatch;
+    } catch (error) {
+      throw error;
+    }
   }
 
   static save(user) {
