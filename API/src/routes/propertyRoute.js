@@ -4,6 +4,7 @@ import verifyToken from '../middlewares/myToken';
 import ImageUpload from '../middlewares/uploadImage';
 import ValidateProperty from '../middlewares/propertyValidation';
 import authorization from '../middlewares/myAuthorization';
+import ValidateUpdateProperty from '../middlewares/propertyUpdateValidation';
 
 const router = Router();
 
@@ -21,8 +22,8 @@ router.patch(
   verifyToken,
   authorization,
   ImageUpload.imageUpdate,
-  //   ValidateProperty.validate(),
-  //   ValidateProperty.verifyValidationResult,
+  ValidateUpdateProperty.validate(),
+  ValidateUpdateProperty.verifyValidationResult,
   propertyController.propertyUpdate
 );
 
