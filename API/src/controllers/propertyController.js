@@ -164,4 +164,30 @@ export default class PropertyController {
       });
     }
   }
+
+  static async getSingleProperty(req, res) {
+    let myProperties;
+    try {
+      if (req.params.propertyId) {
+        myProperties = await PropertyServices.getMySingleProperty(
+          req.params.propertyId
+        );
+      }
+      if (!myProperties) {
+        return res.status(404).json({
+          status: '404 not found',
+          error: 'Unable to retrieve any property'
+        });
+      }
+      return res.status(200).json({
+        status: 'Success',
+        data: myProperties
+      });
+    } catch (e) {
+      return res.status(500).json({
+        status: '500 Internal Server Error',
+        error: 'Error Occured'
+      });
+    }
+  }
 }

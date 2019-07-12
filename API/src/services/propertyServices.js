@@ -151,4 +151,50 @@ export default class Property extends PropertyModel {
       throw error;
     }
   }
+
+  static async getMySingleProperty(propertyID) {
+    try {
+      const propertyByID = properties.filter(item => {
+        return parseInt(item.id, 10) === parseInt(propertyID, 10);
+      });
+      const myProperty = propertyByID.map(
+        async ({
+          id,
+          owner,
+          price,
+          state,
+          city,
+          address,
+          type,
+          purpose,
+          status,
+          image_url,
+          created_on
+        }) => {
+          const {
+            email: ownerEmail,
+            phoneNumber: ownerPhoneNumber
+          } = await UserServices.findUserById(owner);
+          return {
+            id,
+            status,
+            type,
+            state,
+            city,
+            address,
+            price,
+            created_on,
+            image_url,
+            ownerEmail,
+            ownerPhoneNumber,
+            purpose
+          };
+        }
+      );
+      const result = await Promise.all(myProperty);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
