@@ -139,8 +139,14 @@ export default class PropertyController {
   }
 
   static async getAllProperties(req, res) {
+    let myProperties;
     try {
-      const myProperties = await PropertyServices.getAll();
+      if (req.query.type) {
+        myProperties = await PropertyServices.getByType(req.query.type);
+      } else {
+        myProperties = await PropertyServices.getAll();
+      }
+
       if (!myProperties) {
         return res.status(404).json({
           status: '404 not found',
