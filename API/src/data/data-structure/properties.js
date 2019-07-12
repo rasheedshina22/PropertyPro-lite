@@ -16,13 +16,13 @@ const properties = [
   },
   {
     id: 2,
-    owner: 2,
+    owner: 1,
     price: 600000.0,
     state: 'Imo',
     city: 'Ekuru',
     address: '20, Donga Street',
     type: '2 bedroom',
-    purpose: 'For Rent',
+    purpose: 'Sale',
     status: 'Available',
     public_id: 'y3qkohsrs50zgx3zjavv',
     image_url:

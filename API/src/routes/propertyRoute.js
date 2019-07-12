@@ -41,4 +41,6 @@ router.delete(
   propertyController.deleteProperty
 );
 
+router.get('/', propertyController.getAllProperties);
+
 export default router;
