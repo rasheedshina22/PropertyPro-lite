@@ -62,9 +62,12 @@ class UserServices extends UserModel {
   }
 
   static async emailExist(emailAddress) {
-    const user = users.find(({ email }) => {
-      return email === emailAddress;
-    });
+    const user = users.find(({ email }) => email === emailAddress);
+    return user;
+  }
+
+  static async findUserById(userId) {
+    const user = users.find(({ id }) => id === parseInt(userId, 10));
     return user;
   }
 }

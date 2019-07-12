@@ -1,5 +1,6 @@
 import PropertyModel from '../models/propertyModel';
 import properties from '../data/data-structure/properties';
+import UserServices from './userServices';
 
 export default class Property extends PropertyModel {
   constructor(
@@ -56,6 +57,50 @@ export default class Property extends PropertyModel {
     try {
       const index = properties.findIndex(({ id }) => id === property.id);
       properties.splice(index, 1);
+    } catch (error) {
+      throw error;
+    }
+  }
+  /* eslint camelcase : 0 */
+
+  static async getAll() {
+    try {
+      const myProperties = properties.map(
+        async ({
+          id,
+          owner,
+          price,
+          state,
+          city,
+          address,
+          type,
+          purpose,
+          status,
+          image_url,
+          created_on
+        }) => {
+          const {
+            email: ownerEmail,
+            phoneNumber: ownerPhoneNumber
+          } = await UserServices.findUserById(owner);
+          return {
+            id,
+            status,
+            type,
+            state,
+            city,
+            address,
+            price,
+            created_on,
+            image_url,
+            ownerEmail,
+            ownerPhoneNumber,
+            purpose
+          };
+        }
+      );
+      const result = await Promise.all(myProperties);
+      return result;
     } catch (error) {
       throw error;
     }
