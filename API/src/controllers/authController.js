@@ -68,8 +68,8 @@ class AuthController {
           status: '401 Unauthorized',
           error: 'Incorrect Password'
         });
-      const { id, first_name, last_name } = user;
-      const token = userServices.generateToken();
+      const { id, first_name, last_name, is_admin } = user;
+      const token = userServices.generateToken(id, is_admin);
       return res.status(200).json({
         status: 'Success',
         data: {

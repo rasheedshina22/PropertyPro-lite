@@ -42,4 +42,13 @@ export default class Property extends PropertyModel {
     const property = properties.find(prop => prop.id === parseInt(propId, 10));
     return property;
   }
+
+  static async updateStatus(property) {
+    try {
+      const index = properties.findIndex(({ id }) => id === property.id);
+      properties.splice(index, 1, property);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

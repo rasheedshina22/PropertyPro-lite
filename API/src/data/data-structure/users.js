@@ -10,7 +10,7 @@ const users = [
     password: bcrypt.hashSync('jioke1', 8),
     phoneNumber: '07037381011',
     address: `${faker.address.streetAddress()}, Lagos, Nigeria`,
-    is_admin: false
+    is_admin: true
   }
 ];
 
