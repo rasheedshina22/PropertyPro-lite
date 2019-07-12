@@ -6,7 +6,7 @@ const properties = [
     state: 'Anambra',
     city: 'Onitsha',
     address: '20, Uke Street',
-    type: '3 bedroom',
+    type: 'Duplex',
     purpose: 'Rent',
     status: 'Available',
     public_id: 'gbws7csjxykasla7g3wk',
