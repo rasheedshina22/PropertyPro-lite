@@ -8,7 +8,7 @@ const user = {
   last_name: 'okafor',
   password: '1234567',
   confirm_password: '1234567',
-  phoneNumber: '07055463452',
+  phone_number: '07055463452',
   address: ' Lagos, Nigeria'
 };
 
@@ -19,7 +19,7 @@ const incompleteUser = {
   last_name: faker.name.lastName(),
   password: faker.internet.password(),
   confirm_password: faker.internet.password(),
-  phoneNumber: '',
+  phone_number: '',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 
@@ -30,7 +30,7 @@ const invalidUserData = {
   last_name: faker.name.lastName(),
   password: faker.internet.password(),
   confirm_password: faker.internet.password(),
-  phoneNumber: 'ayo',
+  phone_number: 'ayo',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 
@@ -41,7 +41,7 @@ const alreadyExistingUser = {
   last_name: 'okwuosa',
   password: '123456',
   confirm_password: '123456',
-  phoneNumber: '07055463452',
+  phone_number: '07055463452',
   address: `${faker.address.streetAddress()}, Lagos, Nigeria`
 };
 

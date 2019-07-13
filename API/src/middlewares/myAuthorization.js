@@ -1,6 +1,6 @@
 import PropertyServices from '../services/propertyServices';
 /* eslint camelcase: 0 */
-const authorization = async (req, res, next) => {
+const token = async (req, res, next) => {
   try {
     const { propertyId } = req.params;
     const property = await PropertyServices.findPropertyById(propertyId);
@@ -27,4 +27,4 @@ const authorization = async (req, res, next) => {
     });
   }
 };
-export default authorization;
+export default token;

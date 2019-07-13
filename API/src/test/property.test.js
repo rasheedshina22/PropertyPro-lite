@@ -20,13 +20,13 @@ describe('Property Route Endpoints', () => {
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
-        .set('authorization', validTokenData)
+        .set('token', validTokenData)
         .set('Connection', 'keep-alive')
         .expect('Content-Type', /json/)
         .expect(201)
         .expect(res => {
           const { status, data } = res.body;
-          expect(status).to.equal('Success');
+          expect(status).to.equal('success');
           expect(data).to.have.all.keys(
             'id',
             'status',
@@ -81,7 +81,7 @@ describe('Property Route Endpoints', () => {
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('authorization', inValidTokenData)
+        .set('token', inValidTokenData)
         .expect('Content-Type', /json/)
         .expect(401)
         .expect(res => {
@@ -106,7 +106,7 @@ describe('Property Route Endpoints', () => {
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('authorization', validTokenData)
+        .set('token', validTokenData)
         .expect('Content-Type', /json/)
         .expect(400)
         .expect(res => {
@@ -127,7 +127,7 @@ describe('Property Route Endpoints', () => {
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('authorization', validTokenData)
+        .set('token', validTokenData)
         .expect('Content-Type', /json/)
         .expect(400)
         .expect(res => {
@@ -153,13 +153,13 @@ describe('Property Route Endpoints', () => {
           'image',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
-        .set('authorization', validTokenData)
+        .set('token', validTokenData)
         .set('Connection', 'keep-alive')
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(res => {
           const { status, data } = res.body;
-          expect(status).to.equal('Success');
+          expect(status).to.equal('success');
           expect(data).to.have.all.keys(
             'id',
             'status',
@@ -214,7 +214,7 @@ describe('Property Route Endpoints', () => {
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('authorization', inValidTokenData)
+        .set('token', inValidTokenData)
         .expect('Content-Type', /json/)
         .expect(401)
         .expect(res => {
@@ -239,7 +239,7 @@ describe('Property Route Endpoints', () => {
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
-        .set('authorization', validTokenData)
+        .set('token', validTokenData)
         .expect('Content-Type', /json/)
         .expect(400)
         .expect(res => {
