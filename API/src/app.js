@@ -1,9 +1,11 @@
 import { config } from 'dotenv';
 import express from 'express';
+import swaggerUI from 'swagger-ui-express';
 import cors from 'cors';
 import { json, urlencoded } from 'body-parser';
 import authRoute from './routes/authRoute';
 import propertyRoute from './routes/propertyRoute';
+import doc from '../../swagger.json';
 
 // Initialize process.env variables
 config();
@@ -23,7 +25,8 @@ app.set('port', port);
 
 //  use cors only for our routes
 app.use(cors());
-
+// Render api-docs
+app.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(doc));
 // routes
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/property', propertyRoute);
