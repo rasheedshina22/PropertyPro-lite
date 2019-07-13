@@ -4,76 +4,87 @@ import UserServices from '../services/userServices';
 export default class SignUp {
   static validateData() {
     return [
-      check(['first_name', 'last_name'])
+      check('first_name')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('First Name is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
+        .withMessage('First Name cannot be empty')
         .isAlpha()
-        .withMessage('Should be Alphabets only')
+        .withMessage('First Name Should be Alphabets only')
         .isLength({ min: 3 })
-        .withMessage('Should be atleast 3 characters long')
+        .withMessage('First Name Should be at least 3 characters long')
+        .trim()
+        .escape(),
+      check('last_name')
+        .exists()
+        .withMessage('Last Name is Required')
+        .not()
+        .isEmpty()
+        .withMessage('Last Name cannot be empty')
+        .isAlpha()
+        .withMessage('Last Name Should be Alphabets only')
+        .isLength({ min: 3 })
+        .withMessage('Last Name be at least 3 characters long')
         .trim()
         .escape(),
       check('address')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Address is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isLength({ min: 5 })
-        .withMessage('Should be atleast 3 characters long')
+        .withMessage('Address cannot be empty')
+        .isLength({ min: 3 })
+        .withMessage('Address should be atleast 3 characters long')
         .trim()
         .escape(),
       check('email')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Email is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
+        .withMessage('Email cannot be empty')
         .normalizeEmail()
         .isEmail()
-        .withMessage('Should be a valid Email Address'),
+        .withMessage('Email Should be a valid Email Address'),
       check('confirm_password')
-        .exists()
-        .withMessage('Field is Required')
+        .optional()
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty'),
+        .withMessage('Confirm Password cannot be empty')
+        .custom((value, { req }) => value === req.body.password)
+        .withMessage('Confirm password should match the original Password'),
       check('password')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Password is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isLength({ min: 6 })
-        .withMessage('Should be atleast 6 characters Long')
-        .custom((value, { req }) => value === req.body.confirm_password)
-        .withMessage('should match the confirm Password field')
+        .withMessage('Password cannot be empty')
+        .isLength({ min: 3 })
+        .withMessage('Password Should be at least 3 characters Long')
         .trim()
         .escape(),
-      check('phoneNumber')
+      check('phone_number')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Phone Number Field is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
+        .withMessage('Phone Number cannot be empty')
         .isNumeric()
         .withMessage(
-          'Should be plain numbers without a country code or a + sign'
+          'Phone Numbers Should be plain numbers without a country code or a + sign'
         )
-        .isLength({ max: 11, min: 9 })
-        .withMessage('Should be atleast 9-11 characters')
     ];
   }
 
   static async myValidationResult(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      const errArr = errors.array().map(({ msg }) => msg);
       return res.status(400).json({
         status: '400 Invalid Request',
-        error: 'Your request contains invalid parameters'
+        error: 'Your request contains invalid parameters',
+        errors: errArr
       });
     }
 
