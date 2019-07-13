@@ -3,6 +3,10 @@
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
 [![Website jiokeokwuosa.github.io/PropertyPro-lite/UI](https://img.shields.io/website-up-down-green-red/https/jiokeokwuosa.github.io/PropertyPro-lite/UI.svg)](https://jiokeokwuosa.github.io/PropertyPro-lite/UI/)
+[![Build Status](https://travis-ci.org/jiokeokwuosa/PropertyPro-lite.svg?branch=develop)](https://travis-ci.org/jiokeokwuosa/PropertyPro-lite)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1ddfdf8386b8ed46765f/maintainability)](https://codeclimate.com/github/jiokeokwuosa/PropertyPro-lite/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1ddfdf8386b8ed46765f/test_coverage)](https://codeclimate.com/github/jiokeokwuosa/PropertyPro-lite/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jiokeokwuosa/PropertyPro-lite/badge.svg)](https://coveralls.io/github/jiokeokwuosa/PropertyPro-lite)
 
 ## Required Features
 
