@@ -5,21 +5,13 @@ export default class Login {
     return [
       check('email')
         .exists()
-        .withMessage('Field is Required')
-        .not()
-        .isEmpty()
-        .withMessage('Field cannot be empty')
+        .withMessage('Email is Required')
         .normalizeEmail()
         .isEmail()
-        .withMessage('Should be a valid Email Address'),
+        .withMessage('Kindly put a valid Email Address'),
       check('password')
         .exists()
-        .withMessage('Field is Required')
-        .not()
-        .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isLength({ min: 6 })
-        .withMessage('Should be atleast 6 characters Long')
+        .withMessage('Password  is Required')
         .trim()
         .escape()
     ];
@@ -27,32 +19,13 @@ export default class Login {
 
   static async myValidationResult(req, res, next) {
     const errors = validationResult(req);
-    let isRequiredError = false;
-    let isInvalidPasswordError = false;
-    let isInvalidEmail = false;
     if (!errors.isEmpty()) {
-      const validateErrors = errors.array();
-      validateErrors.forEach(err => {
-        if (err.msg === 'Field cannot be empty') isRequiredError = true;
-        if (err.msg === 'Invalid Password') isInvalidPasswordError = true;
-        if (err.msg === 'Should be a valid Email Address')
-          isInvalidEmail = true;
+      const errArr = errors.array().map(({ msg }) => msg);
+      return res.status(400).json({
+        status: '400 Invalid Request',
+        error: 'Your request contains invalid parameters',
+        errors: errArr
       });
-      if (isRequiredError)
-        return res.status(401).json({
-          status: '401 Unauthorized',
-          error: 'Email or Password field should not be  empty'
-        });
-      if (isInvalidPasswordError)
-        return res.status(401).json({
-          status: '401 Unauthorized',
-          error: 'Invalid Password'
-        });
-      if (isInvalidEmail)
-        return res.status(401).json({
-          status: '401 Unauthorized',
-          error: 'Invalid Email Address'
-        });
     }
 
     return next();

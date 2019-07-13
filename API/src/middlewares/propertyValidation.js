@@ -1,104 +1,88 @@
 import { check, validationResult } from 'express-validator';
-import { states, type, purpose, status } from '../helpers/propertyData';
 
 export default class PostProperty {
   static validate() {
     return [
-      check('status')
+      check('type')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Please input the type of property')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isIn([...status])
-        .withMessage('should be either Available, Sold or Rented')
-        .trim(),
-      check('price')
+        .withMessage('Property type field cannot be empty'),
+      check('address')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Address field is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isLength({ min: 3, max: 15 })
-        .withMessage('should be between 3-15 characters long')
+        .withMessage('Address field cannot be empty')
+        .isLength({ min: 3 })
+        .withMessage('Address fiels should be atleast 3 characters long')
         .trim()
-        .matches(/^\d+(\.|\d)\d+$/)
-        .withMessage('should be a float or numbers')
+        .escape(),
+      check('city')
+        .exists()
+        .withMessage('City field is Required')
+        .not()
+        .isEmpty()
+        .withMessage('City field cannot be empty')
+        .isAlpha()
+        .withMessage('City field Should be Alphabets only')
+        .trim()
+        .isLength({ min: 3 })
+        .withMessage('City Should be atleast 3 characters long')
         .escape(),
       check('state')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('State is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isIn([...states])
-        .withMessage('should be one of the states listed')
+        .withMessage('State cannot be empty')
         .trim(),
-      check('city')
+      check('price')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Price field is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isAlpha()
-        .withMessage('Should be Alphabets only')
+        .withMessage('Price Field cannot be empty')
         .trim()
-        .isLength({ min: 3 })
-        .withMessage('Should be atleast 3 characters long')
+        .matches(/^\d+(\.|\d)\d+$/)
+        .withMessage('Price field should contain a float or number')
         .escape(),
-      check('address')
+      check('image_url')
         .exists()
-        .withMessage('Field is Required')
+        .withMessage('Image Url is Required')
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isLength({ min: 5 })
-        .withMessage('Should be atleast 3 characters long')
-        .trim()
-        .escape(),
-      check('type')
-        .exists()
-        .withMessage('Field is Required')
+        .withMessage('Image Url cannot be empty')
+        .trim(),
+      check('status')
+        .optional()
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isIn([...type])
-        .withMessage('should be one of the types listed'),
+        .withMessage('Status cannot be empty')
+        .trim(),
       check('purpose')
-        .exists()
-        .withMessage('Field is Required')
+        .optional()
         .not()
         .isEmpty()
-        .withMessage('Field cannot be empty')
-        .isIn([...purpose])
-        .withMessage('should be one of the types listed')
+        .withMessage('Purpose cannot be empty'),
+      check('description')
+        .optional()
+        .not()
+        .isEmpty()
+        .withMessage('Description cannot be empty')
     ];
   }
   /* eslint no-param-reassign: 0 */
 
   static async verifyValidationResult(req, res, next) {
     const errors = validationResult(req);
-    let isRequired = false;
     if (!errors.isEmpty()) {
-      const validateErrors = errors.array();
-      const errorResult = validateErrors.reduce((newErrors, err) => {
-        if (err.msg === 'Field is Required') isRequired = true;
-        if (err.msg === 'Field cannot be empty') isRequired = true;
-        newErrors[err.param] = !newErrors[err.param]
-          ? err.msg
-          : newErrors[err.param];
-        return newErrors;
-      }, {});
-      if (isRequired)
-        return res.status(400).json({
-          status: '400 Bad Request',
-          error: 'Some required fields are missing',
-          errors: errorResult
-        });
+      const errArr = errors.array().map(({ msg }) => msg);
       return res.status(400).json({
-        status: '400 Bad Request',
+        status: '400 Invalid Request',
         error: 'Your request contains invalid parameters',
-        errors: errorResult
+        errors: errArr
       });
     }
 
