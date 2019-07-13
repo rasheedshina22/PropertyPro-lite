@@ -72,7 +72,7 @@ The API is currently in version 1 (v1) and is hosted at [https://propertypro-lit
 | PATCH /property/<:property-id>                   | Update property data.                    |
 | PATCH /property/<:property-id>/sold              | Mark a property as sold so users know it’s no longer available .|
 | DELETE /property/<:property-id>                  | Delete a property advert.                |
-| GET /property/<:property-id>/                    | Get all property adverts                 |
+| GET /property/                                   | Get all property adverts                 |
 | GET /property/type= propertyType                 | Get all property advertisement offering a specific type of property. |
 | GET /property/<:property-id>                     |  View a specific property advert.        |
 
