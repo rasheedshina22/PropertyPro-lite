@@ -64,7 +64,7 @@ The API is currently in version 1 (v1) and is hosted at [https://propertypro-lit
 
 ## API Documentation Link
 
-The API is currently in version 1 (v1) and is hosted at [https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/](https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/)
+The API documentation is at [https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/](https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/)
 
 ## API Endpoints
 
