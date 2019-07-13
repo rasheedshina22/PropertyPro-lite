@@ -18,7 +18,7 @@ router.post(
 );
 
 router.patch(
-  '/:id',
+  '/:propertyId',
   verifyToken,
   authorization,
   ImageUpload.imageUpdate,
@@ -28,10 +28,17 @@ router.patch(
 );
 
 router.patch(
-  '/:id/sold',
+  '/:propertyId/sold',
   verifyToken,
   authorization,
   propertyController.markPropertyAsSold
+);
+
+router.delete(
+  '/:propertyId',
+  verifyToken,
+  authorization,
+  propertyController.deleteProperty
 );
 
 export default router;

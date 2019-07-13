@@ -118,4 +118,23 @@ export default class PropertyController {
       });
     }
   }
+
+  static async deleteProperty(req, res) {
+    try {
+      const { prop: property } = req;
+      const { id } = property;
+      await PropertyServices.propertyDelete(id);
+      return res.status(200).json({
+        status: 'Success',
+        data: {
+          message: 'Property Deleted Successfully'
+        }
+      });
+    } catch (e) {
+      return res.status(500).json({
+        status: '500 Internal Server Error',
+        error: 'Error Occured'
+      });
+    }
+  }
 }

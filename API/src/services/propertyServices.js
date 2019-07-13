@@ -51,4 +51,13 @@ export default class Property extends PropertyModel {
       throw error;
     }
   }
+
+  static async propertyDelete(property) {
+    try {
+      const index = properties.findIndex(({ id }) => id === property.id);
+      properties.splice(index, 1);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
