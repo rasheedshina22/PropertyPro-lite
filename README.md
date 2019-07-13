@@ -62,6 +62,10 @@ You can see a hosted version of the template at [https://jiokeokwuosa.github.io/
 
 The API is currently in version 1 (v1) and is hosted at [https://propertypro-lite-e.herokuapp.com/api/v1](https://propertypro-lite-e.herokuapp.com/api/v1)
 
+## API Documentation Link
+
+The API is currently in version 1 (v1) and is hosted at [https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/](https://propertypro-lite-e.herokuapp.com/api/v1/api-docs/)
+
 ## API Endpoints
 
 | Endpoint                                         | Functionality                            |
