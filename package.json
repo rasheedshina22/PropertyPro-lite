@@ -7,10 +7,11 @@
     "test": "nyc --reporter=text mocha ./API/src/**/*.test.js --timeout 30000 -r @babel/register --exit",
     "start": "node ./API/dist/app.js",
     "dev": "nodemon --exec babel-node ./API/src/app.js",
-    "build": "babel ./API/src -d ./API/dist",
+    "build": "babel ./API/src -d ./API/dist --copy-files",
     "test-gradle": "nyc --reporter=lcov mocha ./API/src/**/*.test.js -r @babel/register --timeout 30000 --exit",
     "coveralls": "nyc npm run test-gradle && nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "migration": "babel-node ./API/src/data/db/migrations.js"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",
+    "pg": "^7.11.0",
     "swagger-ui-express": "^4.0.7"
   },
   "homepage": "https://github.com/jiokeokwuosa/PropertyPro-lite#readme"
