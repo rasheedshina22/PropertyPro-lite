@@ -10,25 +10,23 @@ class AuthController {
       first_name,
       last_name,
       password,
-      phoneNumber,
+      phone_number,
       address
     } = req.body;
 
     try {
-      const id = Helper.generateID(users);
       const pass = await userServices.encrptPassword(password);
       const user = {
-        id,
         email,
         first_name,
         last_name,
         address,
-        phoneNumber,
+        phone_number,
         password: pass,
         is_admin: false
       };
-      const status = userServices.save(user);
-      if (status) {
+      const { id } = await userServices.save(user);
+      if (id) {
         const token = userServices.generateToken(id, false);
         return res.status(201).json({
           status: 'Success',

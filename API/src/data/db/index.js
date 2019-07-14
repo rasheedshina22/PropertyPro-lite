@@ -10,12 +10,12 @@ class Database {
     });
   }
 
-  async query(rawQuery) {
+  async queryRaw(rawQuery) {
     const res = await this.pool.query(rawQuery);
     return res;
   }
 
-  async queryWithParams(text, params) {
+  async queryArg(text, params) {
     const res = await this.pool.query(text, params);
     return res;
   }

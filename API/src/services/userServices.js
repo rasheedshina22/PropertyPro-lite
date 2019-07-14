@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/userModel';
-import users from '../data/data-structure/users';
+import db from '../data/db/index';
 
 // Initialize process.env variables
 config();
@@ -55,15 +55,30 @@ class UserServices extends UserModel {
     }
   }
 
-  static save(user) {
-    const noOfUsers = users.length;
-    const newNoOfUsers = users.push(user);
-    return newNoOfUsers > noOfUsers;
+  static async emailExist(emailAddress) {
+    const text = `SELECT * FROM users WHERE email = $1`;
+    const value = [emailAddress];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
 
-  static async emailExist(emailAddress) {
-    const user = users.find(({ email }) => email === emailAddress);
-    return user;
+  static async save(user) {
+    const text = `
+      INSERT INTO users 
+      (email, address, first_name , last_name, phone_number, is_admin, password)
+      VALUES($1, $2, $3, $4, $5, $6, $7) returning *;
+    `;
+    const values = [
+      user.email,
+      user.address,
+      user.first_name,
+      user.last_name,
+      user.phone_number,
+      user.is_admin,
+      user.password
+    ];
+    const { rows } = await db.queryArg(text, values);
+    return rows[0];
   }
 
   static async findUserById(userId) {
