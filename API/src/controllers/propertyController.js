@@ -1,4 +1,3 @@
-import Helpers from '../helpers/helper';
 import properties from '../data/data-structure/properties';
 import PropertyServices from '../services/propertyServices';
 
@@ -6,41 +5,45 @@ export default class PropertyController {
   /* eslint camelcase: 0 */
   static async postProperty(req, res) {
     try {
-      const { price, state, city, address, type, purpose } = req.body;
-      let { status } = req.body;
-      const owner = req.data.id;
-      const { url, public_id } = req.file;
-      // const url = 'fakeurl';
-      const id = await Helpers.generateID(properties);
-      if (!status) status = 'Available';
-      const property = {
-        id,
-        owner,
+      const {
         price,
         state,
         city,
         address,
         type,
         purpose,
-        status,
+        image_url,
+        public_id
+      } = req.body;
+      const owner = req.data.id;
+      const { id: stateID } = await PropertyServices.getStateID(state);
+      const { id: typeID } = await PropertyServices.getTypeID(type);
+      const { id: purposeID } = await PropertyServices.getPurposeID(purpose);
+
+      const property = {
+        owner,
+        price,
+        city,
+        address,
+        image_url,
         public_id,
-        image_url: url,
-        created_on: new Date().toLocaleString()
+        state: stateID,
+        type: typeID,
+        purpose: purposeID
       };
-      const { created_on } = property;
-      await PropertyServices.save(property);
+      const { id, created_on } = await PropertyServices.save(property);
       return res.status(201).json({
-        status: 'Success',
+        status: 'success',
         data: {
           id,
-          status,
+          status: 'available',
           type,
           state,
           city,
           address,
           price,
           created_on,
-          image_url: url,
+          image_url,
           purpose
         }
       });

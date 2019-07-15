@@ -1,6 +1,7 @@
 import PropertyModel from '../models/propertyModel';
 import properties from '../data/data-structure/properties';
 import UserServices from './userServices';
+import db from '../data/db/index';
 
 export default class Property extends PropertyModel {
   constructor(
@@ -33,10 +34,70 @@ export default class Property extends PropertyModel {
     );
   }
 
-  static save(property) {
-    const noOfProperties = properties.length;
-    const newOfProperties = properties.push(property);
-    return newOfProperties > noOfProperties;
+  static async getStateID(state) {
+    const text = `SELECT * FROM states WHERE name = $1`;
+    const value = [state];
+    const { rows } = await db.queryArg(text, value);
+    if (rows[0]) return rows[0];
+    const text1 = `
+      INSERT INTO states 
+      (name)
+      VALUES($1) returning *;
+    `;
+    const value1 = [state];
+    const result = await db.queryArg(text1, value1);
+    return result.rows[0];
+  }
+
+  static async getTypeID(type) {
+    const text = `SELECT * FROM types WHERE name = $1`;
+    const value = [type];
+    const { rows } = await db.queryArg(text, value);
+    if (rows[0]) return rows[0];
+    const text1 = `
+      INSERT INTO types 
+      (name)
+      VALUES($1) returning *;
+    `;
+    const value1 = [type];
+    const result = await db.queryArg(text1, value1);
+    return result.rows[0];
+  }
+
+  static async getPurposeID(purpose) {
+    const text = `SELECT * FROM purposes WHERE name = $1`;
+    const value = [purpose];
+    const { rows } = await db.queryArg(text, value);
+    if (rows[0]) return rows[0];
+    const text1 = `
+      INSERT INTO purposes 
+      (name)
+      VALUES($1) returning *;
+    `;
+    const value1 = [purpose];
+    const result = await db.queryArg(text1, value1);
+    return result.rows[0];
+  }
+
+  static async save(property) {
+    const text = `
+      INSERT INTO properties 
+      (owner, price, state , city, address, type, image_url, public_id, purpose)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *;
+    `;
+    const values = [
+      property.owner,
+      property.price,
+      property.state,
+      property.city,
+      property.address,
+      property.type,
+      property.image_url,
+      property.public_id,
+      property.purpose
+    ];
+    const { rows } = await db.queryArg(text, values);
+    return rows[0];
   }
 
   static async findPropertyById(propId) {
