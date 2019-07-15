@@ -11,7 +11,8 @@
     "test-gradle": "nyc --reporter=lcov mocha ./API/src/**/*.test.js -r @babel/register --timeout 30000 --exit",
     "coveralls": "nyc npm run test-gradle && nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "migration": "babel-node ./API/src/data/db/migrations.js"
+    "migration": "babel-node ./API/src/data/db/migrations.js",
+    "testdev": "npm run migration && npm test"
   },
   "repository": {
     "type": "git",

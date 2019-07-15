@@ -1,5 +1,3 @@
-import Helper from '../helpers/helper';
-import users from '../data/data-structure/users';
 import userServices from '../services/userServices';
 
 class AuthController {
@@ -29,7 +27,7 @@ class AuthController {
       if (id) {
         const token = userServices.generateToken(id, false);
         return res.status(201).json({
-          status: 'Success',
+          status: 'success',
           data: {
             token,
             id,
@@ -69,7 +67,7 @@ class AuthController {
       const { id, first_name, last_name, is_admin } = user;
       const token = userServices.generateToken(id, is_admin);
       return res.status(200).json({
-        status: 'Success',
+        status: 'success',
         data: {
           token,
           id,

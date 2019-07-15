@@ -14,9 +14,9 @@ class User {
     this.first_name = firstName;
     this.last_name = lastName;
     this.password = password;
-    this.phoneNumber = phoneNumber;
+    this.phone_number = phoneNumber;
     this.address = address;
-    this.isAdmin = isAdmin;
+    this.is_admin = isAdmin;
   }
 }
 

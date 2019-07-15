@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 // eslint-disable-next-line consistent-return
 const validateToken = (req, res, next) => {
-  const token = req.headers.authorization;
+  const { token } = req.headers;
   if (!token)
     return res.status(401).json({
       status: '401 unauthorized',

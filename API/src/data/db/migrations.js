@@ -67,8 +67,8 @@ const migrations = async () => {
         );`;
   /* eslint no-console : 0 */
   try {
-    await db.query(tables);
-    await db.query(seeders);
+    await db.queryRaw(tables);
+    await db.queryRaw(seeders);
   } catch (err) {
     console.log(err.stack);
   }
