@@ -27,7 +27,7 @@ router.patch(
 );
 
 router.patch(
-  '/:propertyId/sold',
+  '/:property_id/sold',
   verifyToken,
   authorization,
   propertyController.markPropertyAsSold

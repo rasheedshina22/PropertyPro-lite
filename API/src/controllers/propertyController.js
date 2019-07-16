@@ -93,27 +93,35 @@ export default class PropertyController {
 
   static async markPropertyAsSold(req, res) {
     try {
-      const { prop: property } = req;
-      property.status = 'Sold';
-      await PropertyServices.updateStatus(property);
+      const { property_id } = req.params;
+      const prop = await PropertyServices.markAsSold(property_id);
+      const { name: statusName } = await PropertyServices.getStatus(
+        prop.status
+      );
+      const { name: typeName } = await PropertyServices.getType(prop.type);
+      const { name: stateName } = await PropertyServices.getState(prop.state);
+      const { name: purposeName } = await PropertyServices.getPurpose(
+        prop.purpose
+      );
       return res.status(200).json({
-        status: 'Success',
+        status: 'success',
         data: {
-          id: property.id,
-          status: property.status,
-          type: property.type,
-          state: property.state,
-          city: property.city,
-          address: property.address,
-          price: property.price,
-          created_on: property.created_on,
-          image_url: property.image_url
+          id: prop.id,
+          status: statusName,
+          type: typeName,
+          state: stateName,
+          city: prop.city,
+          address: prop.address,
+          price: prop.price,
+          created_on: prop.created_on,
+          image_url: prop.image_url,
+          purpose: purposeName
         }
       });
     } catch (e) {
       return res.status(500).json({
-        status: '500 Internal Server Error',
-        error: 'Error Occured'
+        status: '500 Server Interval Error',
+        error: 'Oops! Error occurred, Do try again'
       });
     }
   }
