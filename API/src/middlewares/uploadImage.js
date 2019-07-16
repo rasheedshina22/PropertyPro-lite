@@ -31,7 +31,7 @@ export default class ImageUpload {
     const multerUpload = multer({
       storage,
       limits: { files: 1, fileSize: 900000 }
-    }).single('image');
+    }).single('image_url');
     multerUpload(req, res, async err => {
       if (err instanceof multer.MulterError)
         return res.status(400).json({

@@ -161,7 +161,7 @@ export default class PropertyController {
         });
       }
       return res.status(200).json({
-        status: 'Success',
+        status: 'success',
         data: myProperties
       });
     } catch (e) {
@@ -175,10 +175,11 @@ export default class PropertyController {
   static async getSingleProperty(req, res) {
     let myProperties;
     try {
-      if (req.params.propertyId) {
+      if (req.params.property_id) {
         myProperties = await PropertyServices.getMySingleProperty(
-          req.params.propertyId
+          req.params.property_id
         );
+        console.log(req.params.property_id)
       }
       if (!myProperties) {
         return res.status(404).json({
@@ -187,7 +188,7 @@ export default class PropertyController {
         });
       }
       return res.status(200).json({
-        status: 'Success',
+        status: 'success',
         data: myProperties
       });
     } catch (e) {
