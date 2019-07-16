@@ -143,14 +143,13 @@ export default class Property extends PropertyModel {
     return rows[0];
   }
 
-  static async propertyDelete(property) {
-    try {
-      const index = properties.findIndex(({ id }) => id === property.id);
-      properties.splice(index, 1);
-    } catch (error) {
-      throw error;
-    }
+  static async markAsSold(id) {
+    const text = `UPDATE properties SET status = $1 WHERE id =$2 returning *`;
+    const value = ['2', id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
+
   /* eslint camelcase : 0 */
 
   static async getAll() {
