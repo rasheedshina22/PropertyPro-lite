@@ -40,7 +40,7 @@ router.delete(
   propertyController.deleteProperty
 );
 
-router.get('/', propertyController.getAllProperties);
+router.get('/', verifyToken, propertyController.getAllProperties);
 router.get('/:propertyId', propertyController.getSingleProperty);
 
 export default router;
