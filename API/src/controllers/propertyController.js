@@ -128,9 +128,8 @@ export default class PropertyController {
 
   static async deleteProperty(req, res) {
     try {
-      const { prop: property } = req;
-      const { id } = property;
-      await PropertyServices.propertyDelete(id);
+      const { property_id } = req.params;      
+      await PropertyServices.propertyDelete(property_id);
       return res.status(200).json({
         status: 'Success',
         data: {
