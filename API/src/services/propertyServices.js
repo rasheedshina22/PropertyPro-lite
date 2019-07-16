@@ -150,6 +150,13 @@ export default class Property extends PropertyModel {
     return rows[0];
   }
 
+  static async propertyDelete(id) {
+    const text = `DELETE FROM properties WHERE id = $1`;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
+  }
+
   /* eslint camelcase : 0 */
 
   static async getAll() {

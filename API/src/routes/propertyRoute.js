@@ -34,7 +34,7 @@ router.patch(
 );
 
 router.delete(
-  '/:propertyId',
+  '/:property_id',
   verifyToken,
   authorization,
   propertyController.deleteProperty
