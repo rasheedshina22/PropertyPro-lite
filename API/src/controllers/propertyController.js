@@ -128,7 +128,7 @@ export default class PropertyController {
 
   static async deleteProperty(req, res) {
     try {
-      const { property_id } = req.params;      
+      const { property_id } = req.params;
       await PropertyServices.propertyDelete(property_id);
       return res.status(200).json({
         status: 'Success',
@@ -156,7 +156,8 @@ export default class PropertyController {
       if (!myProperties) {
         return res.status(404).json({
           status: '404 not found',
-          error: 'Unable to retrieve any property'
+          error:
+            'Property of that type does not exist, try searching for 2 bedroom'
         });
       }
       return res.status(200).json({
@@ -166,7 +167,7 @@ export default class PropertyController {
     } catch (e) {
       return res.status(500).json({
         status: '500 Internal Server Error',
-        error: 'Error Occured'
+        error: 'Oops! Error occured, seems we dont have such property type'
       });
     }
   }
