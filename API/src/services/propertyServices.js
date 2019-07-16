@@ -101,17 +101,46 @@ export default class Property extends PropertyModel {
   }
 
   static async findPropertyById(propId) {
-    const property = properties.find(prop => prop.id === parseInt(propId, 10));
-    return property;
+    const text = `SELECT * FROM properties WHERE id = $1`;
+    const value = [propId];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
 
-  static async updateStatus(property) {
-    try {
-      const index = properties.findIndex(({ id }) => id === property.id);
-      properties.splice(index, 1, property);
-    } catch (error) {
-      throw error;
-    }
+  static async propertyUpdate(id, price) {
+    const text = `UPDATE properties SET price = $1,updated_on = $2 WHERE id =$3 returning *`;
+    const currentTime = new Date().toLocaleString();
+    const value = [price, currentTime, id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
+  }
+
+  static async getStatus(id) {
+    const text = `SELECT name FROM status WHERE id = $1`;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
+  }
+
+  static async getType(id) {
+    const text = `SELECT name FROM types WHERE id = $1`;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
+  }
+
+  static async getState(id) {
+    const text = `SELECT name FROM states WHERE id = $1`;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
+  }
+
+  static async getPurpose(id) {
+    const text = `SELECT name FROM purposes WHERE id = $1`;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
 
   static async propertyDelete(property) {

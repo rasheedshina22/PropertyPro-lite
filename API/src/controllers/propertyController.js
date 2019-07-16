@@ -57,34 +57,30 @@ export default class PropertyController {
 
   static async propertyUpdate(req, res) {
     try {
-      const { prop } = req;
-      const { price, state, city, address, type, purpose } = req.body;
-      prop.purpose =
-        prop.purpose === purpose || !purpose ? prop.purpose : purpose;
-      prop.price =
-        prop.price === parseFloat(price) || !parseFloat(price)
-          ? prop.price
-          : parseFloat(price);
-      prop.state = prop.state === state || !state ? prop.state : state;
-      prop.city = prop.city === city || !city ? prop.city : city;
-      prop.address =
-        prop.address === address || !address ? prop.address : address;
-      prop.type = prop.type === type || !type ? prop.type : type;
-      const propIndex = properties.findIndex(({ id }) => id === prop.id);
-      properties.splice(propIndex, 1, prop);
+      const { price } = req.body;
+      const { property_id } = req.params;
+      const prop = await PropertyServices.propertyUpdate(property_id, price);
+      const { name: statusName } = await PropertyServices.getStatus(
+        prop.status
+      );
+      const { name: typeName } = await PropertyServices.getType(prop.type);
+      const { name: stateName } = await PropertyServices.getState(prop.state);
+      const { name: purposeName } = await PropertyServices.getPurpose(
+        prop.purpose
+      );
       return res.status(200).json({
-        status: 'Success',
+        status: 'success',
         data: {
           id: prop.id,
-          status: prop.status,
-          type: prop.type,
-          state: prop.state,
+          status: statusName,
+          type: typeName,
+          state: stateName,
           city: prop.city,
           address: prop.address,
           price: prop.price,
           created_on: prop.created_on,
           image_url: prop.image_url,
-          purpose: prop.purpose
+          purpose: purposeName
         }
       });
     } catch (e) {
