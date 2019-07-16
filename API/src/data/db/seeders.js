@@ -32,9 +32,9 @@ const mySeeder = `
     INSERT INTO types (name)
     VALUES ('2 bedroom'),
     ('3 bedroom'),
-    ('Duplex'),
-    ('twin Duplex'),
-    ('Commercial Property'),
+    ('duplex'),
+    ('twin duplex'),
+    ('commercial property'),
     ('land'),   
     ('others');
    

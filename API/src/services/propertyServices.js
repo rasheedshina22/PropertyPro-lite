@@ -51,7 +51,8 @@ export default class Property extends PropertyModel {
 
   static async getTypeID(type) {
     const text = `SELECT * FROM types WHERE name = $1`;
-    const value = [type];
+    const myType = type.toLowerCase();
+    const value = [myType];
     const { rows } = await db.queryArg(text, value);
     if (rows[0]) return rows[0];
     const text1 = `
@@ -59,9 +60,17 @@ export default class Property extends PropertyModel {
       (name)
       VALUES($1) returning *;
     `;
-    const value1 = [type];
+    const value1 = [myType];
     const result = await db.queryArg(text1, value1);
     return result.rows[0];
+  }
+
+  static async getTypeID1(type) {
+    const text = `SELECT * FROM types WHERE name = $1`;
+    const myType = type.toLowerCase();
+    const value = [myType];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
 
   static async getPurposeID(purpose) {
@@ -188,50 +197,37 @@ export default class Property extends PropertyModel {
     return rows;
   }
 
-  static async getByType(propertyType) {
-    try {
-      const propertyByType = properties.filter(item => {
-        return item.type.toLowerCase() === propertyType.toLowerCase();
-      });
-      const myProperties = propertyByType.map(
-        async ({
-          id,
-          owner,
-          price,
-          state,
-          city,
-          address,
-          type,
-          purpose,
-          status,
-          image_url,
-          created_on
-        }) => {
-          const {
-            email: ownerEmail,
-            phoneNumber: ownerPhoneNumber
-          } = await UserServices.findUserById(owner);
-          return {
-            id,
-            status,
-            type,
-            state,
-            city,
-            address,
-            price,
-            created_on,
-            image_url,
-            ownerEmail,
-            ownerPhoneNumber,
-            purpose
-          };
-        }
-      );
-      const result = await Promise.all(myProperties);
-      return result;
-    } catch (error) {
-      throw error;
-    }
+  static async getByType(type) {
+    const text = `SELECT
+
+    properties.id, 
+    status.name status, 
+     types.name "type", 
+    states.name state, 
+    properties.city, 
+    properties.address, 
+     properties.price, 
+    properties.created_on, 
+    properties.image_url, 
+     users.email owner_email, 
+     users.phone_number owner_phone_number, 
+     purposes.name purpose,
+    properties.description
+ 
+ FROM 
+    properties 
+ INNER JOIN status ON status.id = properties.status 
+ INNER JOIN states ON states.id = properties.state 
+ INNER JOIN types ON types.id = properties.type 
+ INNER JOIN purposes ON purposes.id = properties.purpose 
+ INNER JOIN users ON users.id = properties.owner
+ 
+ WHERE type = $1;
+ `;
+    const { id } = await Property.getTypeID1(type);
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows[0];
   }
 
   static async getMySingleProperty(propertyID) {
