@@ -41,6 +41,6 @@ router.delete(
 );
 
 router.get('/', verifyToken, propertyController.getAllProperties);
-router.get('/:propertyId', propertyController.getSingleProperty);
+router.get('/:property_id', verifyToken, propertyController.getSingleProperty);
 
 export default router;

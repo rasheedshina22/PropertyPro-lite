@@ -227,52 +227,36 @@ export default class Property extends PropertyModel {
     const { id } = await Property.getTypeID1(type);
     const value = [id];
     const { rows } = await db.queryArg(text, value);
-    return rows[0];
+    return rows;
   }
 
-  static async getMySingleProperty(propertyID) {
-    try {
-      const propertyByID = properties.filter(item => {
-        return parseInt(item.id, 10) === parseInt(propertyID, 10);
-      });
-      const myProperty = propertyByID.map(
-        async ({
-          id,
-          owner,
-          price,
-          state,
-          city,
-          address,
-          type,
-          purpose,
-          status,
-          image_url,
-          created_on
-        }) => {
-          const {
-            email: ownerEmail,
-            phoneNumber: ownerPhoneNumber
-          } = await UserServices.findUserById(owner);
-          return {
-            id,
-            status,
-            type,
-            state,
-            city,
-            address,
-            price,
-            created_on,
-            image_url,
-            ownerEmail,
-            ownerPhoneNumber,
-            purpose
-          };
-        }
-      );
-      const result = await Promise.all(myProperty);
-      return result;
-    } catch (error) {
-      throw error;
-    }
+  static async getMySingleProperty(id) {
+    const text = `
+    SELECT
+    properties.id,
+    status.name status,
+	  types.name "type",
+    states.name state,
+    properties.city,
+    properties.address,
+	  properties.price,
+    properties.created_on,
+    properties.image_url,
+    users.email owner_email,
+	  users.phone_number owner_phone_number,
+	  purposes.name purpose,
+    
+ FROM
+    properties
+ INNER JOIN status ON status.id = properties.status
+ INNER JOIN states ON states.id = properties.state
+ INNER JOIN types ON types.id = properties.type
+ INNER JOIN purposes ON purposes.id = properties.purpose
+ INNER JOIN users ON users.id = properties.owner
+ WHERE properties.id = $1
+ `;
+    const value = [id];
+    const { rows } = await db.queryArg(text, value);
+    return rows;
   }
 }

@@ -79,7 +79,8 @@ const mySeeder = `
   ('Zamfara');
   
   INSERT INTO properties (owner, status, price, state, city, address,type,image_url, public_id, description)
-    VALUES ('1', '1', '12000', '1', 'Lagos','22 uke street', '1','https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png','gbws7csjxykasla7g3wk','I am a description');
+    VALUES ('1', '1', '12000', '1', 'Lagos','22 uke street', '1','https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png','gbws7csjxykasla7g3wk','I am a description'),
+    ('2', '2', '13000', '2', 'Lagos','22 uke street', '1','https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png','gbws7csjxykasla7g3wk','I am a description2');
 `;
 
 export default mySeeder;
