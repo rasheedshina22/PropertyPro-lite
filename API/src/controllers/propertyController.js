@@ -83,6 +83,7 @@ export default class PropertyController {
         }
       });
     } catch (e) {
+      console.log(e.stack);
       return res.status(500).json({
         status: '500 Server Interval Error',
         error: 'Oops! Error occurred, Do try again'

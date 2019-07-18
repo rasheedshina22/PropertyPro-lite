@@ -2,7 +2,7 @@ import userServices from '../services/userServices';
 
 //  valid user data
 const user = {
-  email: 'Emeka.okafor@gmail.com',
+  email: 'Emekafor@gmail.com',
   first_name: 'Emeka',
   last_name: 'Okafor',
   password: 'kate',

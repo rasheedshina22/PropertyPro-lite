@@ -21,6 +21,7 @@ router.patch(
   '/:property_id',
   verifyToken,
   authorization,
+  ImageUpload.imageUpdate,
   ValidateUpdateProperty.validate(),
   ValidateUpdateProperty.verifyValidationResult,
   propertyController.propertyUpdate
