@@ -87,3 +87,10 @@ Okwuosa Chijioke (Okwuosachijioke@gmail.com)
 ## License
 
 This is licensed for your use, modification and distribution under the [MIT license.](https://opensource.org/licenses/MIT)
+
+## My Env Variables
+PORT
+SECRET
+API_SECRET
+CLOUD_NAME
+DATABASE_URL
