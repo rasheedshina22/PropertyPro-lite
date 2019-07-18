@@ -111,7 +111,7 @@ describe('Property Route Endpoints', () => {
         .expect(400)
         .expect(res => {
           const { status } = res.body;
-          expect(status).to.equal('400 Bad Request');
+          expect(status).to.equal('400 Invalid Request');
           expect(res.body).to.have.all.keys('status', 'error', 'errors');
         })
         .end(done);
@@ -132,7 +132,7 @@ describe('Property Route Endpoints', () => {
         .expect(400)
         .expect(res => {
           const { status } = res.body;
-          expect(status).to.equal('400 Bad Request');
+          expect(status).to.equal('400 Invalid Request');
           expect(res.body).to.have.all.keys('status', 'error', 'errors');
         })
         .end(done);
@@ -244,7 +244,7 @@ describe('Property Route Endpoints', () => {
         .expect(400)
         .expect(res => {
           const { status } = res.body;
-          expect(status).to.equal('400 Bad Request');
+          expect(status).to.equal('400 Invalid Request');
           expect(res.body).to.have.all.keys('status', 'error', 'errors');
         })
         .end(done);
