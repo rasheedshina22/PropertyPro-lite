@@ -44,7 +44,6 @@ export default class SignUp {
         .not()
         .isEmpty()
         .withMessage('Email cannot be empty')
-        .normalizeEmail()
         .isEmail()
         .withMessage('Email Should be a valid Email Address'),
       check('confirm_password')

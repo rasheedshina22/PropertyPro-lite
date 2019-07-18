@@ -6,7 +6,6 @@ export default class Login {
       check('email')
         .exists()
         .withMessage('Email is Required')
-        .normalizeEmail()
         .isEmail()
         .withMessage('Kindly put a valid Email Address'),
       check('password')
