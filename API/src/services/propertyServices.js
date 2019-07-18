@@ -1,6 +1,4 @@
 import PropertyModel from '../models/propertyModel';
-import properties from '../data/data-structure/properties';
-import UserServices from './userServices';
 import db from '../data/db/index';
 
 export default class Property extends PropertyModel {

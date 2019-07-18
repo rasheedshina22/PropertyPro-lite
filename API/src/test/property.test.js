@@ -17,7 +17,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('token', validTokenData)
@@ -53,7 +53,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -77,7 +77,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -102,7 +102,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -123,7 +123,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -150,7 +150,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('token', validTokenData)
@@ -186,7 +186,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -210,7 +210,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')
@@ -235,7 +235,7 @@ describe('Property Route Endpoints', () => {
         .field('type', '2 bedroom')
         .field('purpose', 'Rent')
         .attach(
-          'image',
+          'image_url',
           path.resolve(__dirname, '../../../UI/assets/img/property.png')
         )
         .set('Connection', 'keep-alive')

@@ -1,4 +1,3 @@
-import properties from '../data/data-structure/properties';
 import PropertyServices from '../services/propertyServices';
 
 export default class PropertyController {
@@ -11,9 +10,9 @@ export default class PropertyController {
         city,
         address,
         type,
-        purpose,
+        purpose = 'sale',
         image_url,
-        public_id
+        public_id = null
       } = req.body;
       const owner = req.data.id;
       const { id: stateID } = await PropertyServices.getStateID(state);
@@ -179,7 +178,6 @@ export default class PropertyController {
         myProperties = await PropertyServices.getMySingleProperty(
           req.params.property_id
         );
-        console.log(req.params.property_id)
       }
       if (!myProperties) {
         return res.status(404).json({
