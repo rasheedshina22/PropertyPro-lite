@@ -11,6 +11,8 @@ export default class PropertyController {
         address,
         type,
         purpose = 'sale',
+        // image_url is gotten through the middleware, same with public id
+        //  remember to upload the image through postman furing test
         image_url,
         public_id = null
       } = req.body;
@@ -177,7 +179,7 @@ export default class PropertyController {
     try {
       if (req.params.property_id) {
         myProperties = await PropertyServices.getMySingleProperty(
-          req.params.property_id
+          parseInt(req.params.property_id, 10)
         );
       }
       if (!myProperties) {
