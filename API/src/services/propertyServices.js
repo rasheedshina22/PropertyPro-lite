@@ -211,9 +211,11 @@ export default class Property extends PropertyModel {
      users.phone_number owner_phone_number, 
      purposes.name purpose,
     properties.description
- 
+
  FROM 
+
     properties 
+    
  INNER JOIN status ON status.id = properties.status 
  INNER JOIN states ON states.id = properties.state 
  INNER JOIN types ON types.id = properties.type 
@@ -242,10 +244,12 @@ export default class Property extends PropertyModel {
     properties.image_url,
     users.email owner_email,
 	  users.phone_number owner_phone_number,
-	  purposes.name purpose,
+	  purposes.name purpose
     
  FROM
+
     properties
+
  INNER JOIN status ON status.id = properties.status
  INNER JOIN states ON states.id = properties.state
  INNER JOIN types ON types.id = properties.type
