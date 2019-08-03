@@ -26,6 +26,10 @@ class AuthController {
       const { id } = await userServices.save(user);
       if (id) {
         const token = userServices.generateToken(id, false);
+        res.cookie('token', token, {
+          maxAge: 86400000,
+          httpOnly: true
+        });
         return res.status(201).json({
           status: 'success',
           data: {
@@ -66,6 +70,10 @@ class AuthController {
         });
       const { id, first_name, last_name, is_admin } = user;
       const token = userServices.generateToken(id, is_admin);
+      res.cookie('token', token, {
+        maxAge: 86400000,
+        httpOnly: true
+      });
       return res.status(200).json({
         status: 'success',
         data: {

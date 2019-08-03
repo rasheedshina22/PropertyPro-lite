@@ -1,0 +1,14 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _bcrypt = _interopRequireDefault(require("bcrypt"));
+
+var mySeeder = "\n    INSERT INTO users (first_name, last_name, email, password, phone_number, address)\n    VALUES ('Emeka', 'Okafor', 'Emeka.okafor@gmail.com', '".concat(_bcrypt["default"].hashSync('kate', 8), "', '08043534689', '22 uke street onitsha');\n\n    INSERT INTO users (first_name, last_name, email, password, phone_number, address)\n    VALUES ('Gowon', 'nenpan', 'gowon.nenpan@gmail.com', '").concat(_bcrypt["default"].hashSync('nenpan', 8), "', '08064789498', '20, Daniel Street, Ogudu, Lagos State');\n\n    INSERT INTO users (first_name, last_name, email, password, phone_number, address, is_admin)\n    VALUES ('Chijioke', 'Okwuosa', 'okwuosachijioke@gmail', '").concat(_bcrypt["default"].hashSync('jiokeokwuosa', 8), "', '07037381011', '22 Uke street, Lagos State', true);\n   \n\n    INSERT INTO status (name)\n    VALUES ('available'),\n    ('sold'),\n    ('rented');\n\n    INSERT INTO purposes (name)\n    VALUES ('sale'),\n    ('rent');\n\n    INSERT INTO types (name)\n    VALUES ('2 bedroom'),\n    ('3 bedroom'),\n    ('duplex'),\n    ('twin duplex'),\n    ('commercial property'),\n    ('land'),   \n    ('others');\n   \n   \n    INSERT INTO states (name)\n    VALUES ('Abia'),\n  ('Adamawa'),\n  ('Anambra'),\n  ('Akwa Ibom'),\n  ('Bauchi'),\n  ('Bayelsa'),\n  ('Benue'),\n  ('Borno'),\n  ('Cross River'),\n  ('Delta'),\n  ('Ebonyi'),\n  ('Enugu'),\n  ('Edo'),\n  ('Ekiti'),\n  ('Abuja'),\n  ('Gombe'),\n  ('Imo'),\n  ('Jigawa'),\n  ('Kaduna'),\n  ('Kano'),\n  ('Katsina'),\n  ('Kebbi'),\n  ('Kogi'),\n  ('Kwara'),\n  ('Lagos'),\n  ('Nasarawa'),\n  ('Niger'),\n  ('Ogun'),\n  ('Ondo'),\n  ('Osun'),\n  ('Oyo'),\n  ('Plateau'),\n  ('Rivers'),\n  ('Sokoto'),\n  ('Taraba'),\n  ('Yobe'),\n  ('Zamfara');\n  \n  INSERT INTO properties (owner, status, price, state, city, address,type,image_url, public_id, description)\n    VALUES ('1', '1', '12000', '1', 'Lagos','22 uke street', '1','https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png','gbws7csjxykasla7g3wk','I am a description'),\n    ('2', '2', '13000', '2', 'Lagos','22 uke street', '1','https://res.cloudinary.com/ppropertypro-lite/image/upload/v1562519617/property/images/gbws7csjxykasla7g3wk.png','gbws7csjxykasla7g3wk','I am a description2');\n");
+var _default = mySeeder;
+exports["default"] = _default;
