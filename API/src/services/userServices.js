@@ -65,8 +65,8 @@ class UserServices extends UserModel {
   static async save(user) {
     const text = `
       INSERT INTO users 
-      (email, address, first_name , last_name, phone_number, is_admin, password)
-      VALUES($1, $2, $3, $4, $5, $6, $7) returning *;
+      (email, address, first_name , last_name, phone_number, is_admin, password, description)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *;
     `;
     const values = [
       user.email,
@@ -75,7 +75,8 @@ class UserServices extends UserModel {
       user.last_name,
       user.phone_number,
       user.is_admin,
-      user.password
+      user.password,
+      user.description
     ];
     const { rows } = await db.queryArg(text, values);
     return rows[0];

@@ -1,23 +1,29 @@
 import bcrypt from 'bcrypt';
 
 const mySeeder = `
-    INSERT INTO users (first_name, last_name, email, password, phone_number, address)
+    INSERT INTO users (first_name, last_name, email, password, phone_number, address, description)
     VALUES ('Emeka', 'Okafor', 'Emeka.okafor@gmail.com', '${bcrypt.hashSync(
       'kate',
       8
-    )}', '08043534689', '22 uke street onitsha');
+    )}', '08043534689', '22 uke street onitsha','A combination of the unit’s educational design and the instructor’s facilitation forms the basis of the learning environment, so a focused, present and proactive instructor is important to facilitating positive learning experiences. In this sense, the instructor models the kinds of communication principles, interaction protocols, and commitment to students that sets the ground for the teaching-learning contract.
 
-    INSERT INTO users (first_name, last_name, email, password, phone_number, address)
+    ');
+
+    INSERT INTO users (first_name, last_name, email, password, phone_number, address, description)
     VALUES ('Gowon', 'nenpan', 'gowon.nenpan@gmail.com', '${bcrypt.hashSync(
       'nenpan',
       8
-    )}', '08064789498', '20, Daniel Street, Ogudu, Lagos State');
+    )}', '08064789498', '20, Daniel Street, Ogudu, Lagos State','A combination of the unit’s educational design and the instructor’s facilitation forms the basis of the learning environment, so a focused, present and proactive instructor is important to facilitating positive learning experiences. In this sense, the instructor models the kinds of communication principles, interaction protocols, and commitment to students that sets the ground for the teaching-learning contract.
 
-    INSERT INTO users (first_name, last_name, email, password, phone_number, address, is_admin)
+    ');
+
+    INSERT INTO users (first_name, last_name, email, password, phone_number, address,description, is_admin)
     VALUES ('Chijioke', 'Okwuosa', 'okwuosachijioke@gmail', '${bcrypt.hashSync(
       'jiokeokwuosa',
       8
-    )}', '07037381011', '22 Uke street, Lagos State', true);
+    )}', '07037381011', '22 Uke street, Lagos State', 'The unit’s educational design and the instructor’s facilitation forms the basis of the learning environment, so a focused, present and proactive instructor is important to facilitating positive learning experiences. In this sense, the instructor models the kinds of communication principles, interaction protocols, and commitment to students that sets the ground for the teaching-learning contract.
+
+    ', true);
    
 
     INSERT INTO status (name)

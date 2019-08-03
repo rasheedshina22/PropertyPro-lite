@@ -30,7 +30,8 @@ describe('Auth Route Endpoints', () => {
             'id',
             'first_name',
             'last_name',
-            'email'
+            'email',
+            'description'
           );
         })
         .end(done);
