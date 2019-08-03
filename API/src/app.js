@@ -3,6 +3,7 @@ import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 import cors from 'cors';
 import { json, urlencoded } from 'body-parser';
+import cookieParser from 'cookie-parser';
 import authRoute from './routes/authRoute';
 import propertyRoute from './routes/propertyRoute';
 import doc from '../../swagger.json';
@@ -19,12 +20,16 @@ app.use(urlencoded({ extended: true }));
 // parse application/json
 app.use(json());
 
+//  parse cookies
+app.use(cookieParser());
+
 // Set server port
 const port = process.env.PORT || 3000;
 app.set('port', port);
 
 //  use cors only for our routes
 app.use(cors());
+
 // Render api-docs
 app.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(doc));
 // routes
