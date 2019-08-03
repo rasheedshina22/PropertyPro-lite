@@ -9,7 +9,8 @@ class AuthController {
       last_name,
       password,
       phone_number,
-      address
+      address,
+      description
     } = req.body;
 
     try {
@@ -20,6 +21,7 @@ class AuthController {
         last_name,
         address,
         phone_number,
+        description,
         password: pass,
         is_admin: false
       };
@@ -37,7 +39,8 @@ class AuthController {
             id,
             first_name,
             last_name,
-            email
+            email,
+            description
           }
         });
       }

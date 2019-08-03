@@ -8,7 +8,8 @@ const user = {
   password: 'kate',
   confirm_password: 'kate',
   phone_number: '08043534689',
-  address: '22 uke street onitsha'
+  address: '22 uke street onitsha',
+  description: 'i am the description'
 };
 
 //  incomplete user data
@@ -29,7 +30,8 @@ const invalidUserData = {
   password: 'kate',
   confirm_password: 'kate',
   phone_number: '08043534689',
-  address: '22 uke street onitsha'
+  address: '22 uke street onitsha',
+  description: 'i am the description'
 };
 
 //  already existing user data
@@ -40,7 +42,8 @@ const alreadyExistingUser = {
   password: 'kate',
   confirm_password: 'kate',
   phone_number: '08043534689',
-  address: '22 uke street onitsha'
+  address: '22 uke street onitsha',
+  description: 'i am the description'
 };
 
 //  incomplete login data

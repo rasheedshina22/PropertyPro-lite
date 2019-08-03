@@ -7,6 +7,7 @@ class User {
     password,
     phoneNumber,
     address,
+    description,
     isAdmin = false
   ) {
     this.id = id;
@@ -16,6 +17,7 @@ class User {
     this.password = password;
     this.phone_number = phoneNumber;
     this.address = address;
+    this.description = description;
     this.is_admin = isAdmin;
   }
 }

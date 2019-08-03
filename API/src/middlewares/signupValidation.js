@@ -38,6 +38,16 @@ export default class SignUp {
         .withMessage('Address should be atleast 3 characters long')
         .trim()
         .escape(),
+      check('description')
+        .exists()
+        .withMessage('Brief description of your firm is Required')
+        .not()
+        .isEmpty()
+        .withMessage('Description cannot be empty')
+        .isLength({ min: 20 })
+        .withMessage('Description should be atleast 3 characters long')
+        .trim()
+        .escape(),
       check('email')
         .exists()
         .withMessage('Email is Required')
@@ -47,7 +57,8 @@ export default class SignUp {
         .isEmail()
         .withMessage('Email Should be a valid Email Address'),
       check('confirm_password')
-        .optional()
+        .exists()
+        .withMessage('Confirm Password is Required')
         .not()
         .isEmpty()
         .withMessage('Confirm Password cannot be empty')

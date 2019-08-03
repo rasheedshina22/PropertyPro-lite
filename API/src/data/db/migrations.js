@@ -19,6 +19,7 @@ const migrations = async () => {
         password VARCHAR(65) NOT NULL,
         phone_number VARCHAR NOT NULL,
         address VARCHAR NOT NULL,
+        description VARCHAR NOT NULL,
         is_admin BOOLEAN NOT NULL DEFAULT (false),
         created_on TIMESTAMP NOT NULL DEFAULT NOW()
     );
